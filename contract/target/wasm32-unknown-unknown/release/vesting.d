@@ -1,0 +1,1 @@
+/mnt/c/Users/User/OneDrive/Desktop/Nouveau\ dossier/Vesting\ Lightency/Vesting/contract/target/wasm32-unknown-unknown/release/vesting.wasm: /mnt/c/Users/User/OneDrive/Desktop/Nouveau\ dossier/Vesting\ Lightency/Vesting/contract/src/lib.rs
