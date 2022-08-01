@@ -1,4 +1,4 @@
-const CONTRACT_NAME = process.env.CONTRACT_NAME ||'Vesting'
+const CONTRACT_NAME = 'newala.testnet' 
 
 function getConfig(env) {
   switch (env) {

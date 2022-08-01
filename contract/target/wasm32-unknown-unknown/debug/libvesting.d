@@ -1,0 +1,1 @@
+C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\target\wasm32-unknown-unknown\debug\libvesting.rlib: C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\src\lib.rs
