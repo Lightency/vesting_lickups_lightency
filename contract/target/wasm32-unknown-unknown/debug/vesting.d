@@ -1,1 +1,1 @@
-C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\target\wasm32-unknown-unknown\debug\vesting.wasm: C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\src\lib.rs
+/home/superpotato/Desktop/vesting_lockups_lightency/contract/target/wasm32-unknown-unknown/debug/vesting.wasm: /home/superpotato/Desktop/vesting_lockups_lightency/contract/src/lib.rs

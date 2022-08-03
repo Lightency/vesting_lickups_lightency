@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/superpotato/Desktop/vesting_lockups_lightency/contract/target/wasm32-unknown-unknown/release/build/typenum-43dbc46d2082a107/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/superpotato/Desktop/vesting_lockups_lightency/contract/target/wasm32-unknown-unknown/release/build/typenum-43dbc46d2082a107/out/op.rs

@@ -1,42 +1,35 @@
-import React,{useState, useEffect} from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Contract } from 'near-api-js';
+import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { Contract } from "near-api-js";
 
+export default function Vesting() {
+  // token id from the contract
+  const [lockedAmount, setLockedAmount] = useState(0);
+  const [unlockedAmount, setUnlockedAmount] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [clifftime, setClifftime] = useState(0);
 
+  React.useEffect(() => {
+    window.contract.get_locked_amount().then((res) => {
+      setLockedAmount(res);
+    });
+    window.contract.get_duration().then((res) => {
+      setDuration(res);
+    });
 
-const Vesting = props => {
-    const [amount, setAmount] = useState('--');
-    const [locAmount, setLocAmount] = useState('--');
-    const [unlockAmount, setUnlockAmount] = useState('--');
+    window.contract.get_clifftime().then((res) => {
+      setClifftime(res);
+    });
+  });
 
-    useEffect(()=>{
-        let hello=Contract.get_amount_of_token();
-        console.log(hello);
-    },[]);
-    
-    return (
-        <div>Hello</div>
-        /*<Container>
-      <Row>
-        <Col>Account ID:</Col>
-        <Col>{window.accountId===''?'--':window.accountId}</Col>
-      </Row>
-      <Row>
-        <Col>Amount Of Token</Col>
-        <Col>{window.accountId===''?'--':{amount}}</Col>
-      </Row>
-      <Row>
-        <Col>Locked Amount</Col>
-        <Col>{window.accountId===''?'--':{locAmount}}</Col>
-      </Row>
-      <Row>
-        <Col>Unlocked Amount</Col>
-        <Col>{window.accountId===''?'--':{unlockAmount}}</Col>
-      </Row>
-    </Container>*/
-    );
-};
-
-export default Vesting;
+  return (
+    <>
+      <h2> locked amount : {lockedAmount}</h2>
+      <h3>owner id : {window.accountId} </h3>
+      <h3>duration : {duration} years</h3>
+      <h3>clifftime : {clifftime} year </h3>
+    </>
+  );
+}

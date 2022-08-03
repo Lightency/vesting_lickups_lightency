@@ -19,6 +19,7 @@ pub struct Data {
     pub ispaid: bool,
     pub nb_time_payment: u8,
 }
+
 impl Data {
     pub fn get_tokenid(&self) -> AccountId {
         self.token_id.clone()
@@ -127,42 +128,43 @@ impl VestingContract {
     }*/
 
     pub fn get_tokenid(&self) -> AccountId {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_tokenid(),
             None => panic!("There is no data for this owner_id"),
         }
     }
 
     pub fn get_amount_of_token(&self) -> u128 {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_amount_of_token(),
             None => panic!("There is no data for this owner_id"),
         }
     }
 
     pub fn get_locked_amount(&self) -> u128 {
-        match self.records.get(&env::predecessor_account_id()) {
+        // get locked amout of any account
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_locked_amount(),
             None => panic!("There is no data for this owner_id"),
         }
     }
 
     pub fn get_unlocked_amount(&self) -> u128 {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_unlocked_amount(),
             None => panic!("There is no data for this owner_id"),
         }
     }
 
     pub fn get_duration(&self) -> u64 {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_duration(),
             None => panic!("There is no data for this owner_id"),
         }
     }
 
     pub fn get_clifftime(&self) -> u64 {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_clifftime(),
             None => panic!("There is no data for this owner_id"),
         }
@@ -183,9 +185,19 @@ impl VestingContract {
     }
 
     pub fn get_time_of_payments(&self) -> [u64; 4] {
-        match self.records.get(&env::predecessor_account_id()) {
+        match self.records.get(&env::current_account_id()) {
             Some(d) => d.get_time_of_payments(),
             None => panic!("There is no data for this owner_id"),
         }
+    }
+
+    // all locked amount of all accounts
+    // this will return an error fel build cuz lookupmap is not iterable
+    pub fn get_total_locked_amount(&self) -> u128 {
+        let mut total_locked_amount = 0;
+        for (_, data) in &self.records {
+            total_locked_amount += data.get_locked_amount();
+        }
+        total_locked_amount
     }
 }
