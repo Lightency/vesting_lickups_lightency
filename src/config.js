@@ -1,4 +1,4 @@
-const CONTRACT_NAME = 'newala.testnet' 
+const CONTRACT_NAME = 'vestingcontract.testnet' 
 
 function getConfig(env) {
   switch (env) {

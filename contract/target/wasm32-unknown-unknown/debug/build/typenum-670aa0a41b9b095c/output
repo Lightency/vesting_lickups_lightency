@@ -1,2 +1,2 @@
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\target\wasm32-unknown-unknown\debug\build\typenum-670aa0a41b9b095c\out\consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\Vesting\contract\target\wasm32-unknown-unknown\debug\build\typenum-670aa0a41b9b095c\out\op.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\vesting_lockups_lightency\contract\target\wasm32-unknown-unknown\debug\build\typenum-670aa0a41b9b095c\out\consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=C:\Users\User\OneDrive\Desktop\Nouveau_dossier\Vesting_Lightency\vesting_lockups_lightency\contract\target\wasm32-unknown-unknown\debug\build\typenum-670aa0a41b9b095c\out\op.rs
