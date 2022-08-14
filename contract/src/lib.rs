@@ -12,10 +12,7 @@ pub struct Data {
     pub locked_amount: u128,
     pub unlocked_amount: u128,
     pub duration: u64,
-    pub first_payment: u64,
-    pub second_payment: u64,
-    pub third_payment: u64,
-    pub fourth_payment: u64,
+    pub timestamp: u64,
     pub clifftime: u64,
     pub ispaid: bool,
     pub nb_time_payment: u8,
@@ -56,13 +53,8 @@ impl Data {
     pub fn get_nb_time_payment(&self) -> u8 {
         self.nb_time_payment
     }
-    pub fn get_time_of_payments(&self) -> [u64; 4] {
-        return [
-            self.first_payment,
-            self.second_payment,
-            self.third_payment,
-            self.fourth_payment,
-        ];
+    pub fn get_timestamp(&self) -> u64 {
+        self.timestamp
     }
 }
 // Define the contract structure
@@ -115,15 +107,19 @@ impl VestingContract {
             locked_amount: amount_of_token,
             unlocked_amount: 0,
             duration: duration,
-            clifftime: (duration / 4),
-            first_payment: env::block_timestamp() + (duration / 4),
-            second_payment: env::block_timestamp() + (2 * (duration / 4)),
-            third_payment: env::block_timestamp() + (3 * (duration / 4)),
-            fourth_payment: env::block_timestamp() + (4 * (duration / 4)),
+            clifftime: duration / 4,
+            timestamp: env::block_timestamp(),
             ispaid: false,
             nb_time_payment: 0,
         };
         self.records.push(&data);
+    }
+
+    pub fn delete_all(&mut self){
+        assert_self();
+        for _i in 0..self.records.len(){
+            self.records.pop();
+        }
     }
 
     /*pub fn get_data(&self) -> Vec<Data> {
@@ -199,7 +195,7 @@ impl VestingContract {
         let mut vec: Vec<u64> = Vec::new();
         for i in 0..self.records.len() {
             match self.records.get(i) {
-                Some(d) => vec.push(d.get_duration()),
+                Some(d) => vec.push(d.get_clifftime()),
                 None => panic!("There is no data for this owner_id"),
             }
         }
@@ -228,11 +224,11 @@ impl VestingContract {
         vec
     }
 
-    pub fn get_time_of_payments(&self) -> Vec<[u64; 4]> {
-        let mut vec: Vec<[u64; 4]> = Vec::new();
+    pub fn get_timestamp(&self) -> Vec<String> {
+        let mut vec: Vec<String> = Vec::new();
         for i in 0..self.records.len() {
             match self.records.get(i) {
-                Some(d) => vec.push(d.get_time_of_payments()),
+                Some(d) => vec.push(d.get_timestamp().to_string()),
                 None => panic!("There is no data for this owner_id"),
             }
         }

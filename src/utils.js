@@ -36,7 +36,7 @@ export async function initContract() {
         "get_clifftime",
         "is_paid",
         "get_nb_time_payment",
-        "get_time_of_payments",
+        "get_timestamp",
         "get_total_locked_amount",
         "get_total_unlocked_amount",
       ],
